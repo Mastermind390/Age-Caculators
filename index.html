@@ -7,35 +7,47 @@
     <title>Age Calculator</title>
 </head>
 <body>
+
+    <div class="outer-container">
+
+        <div class="input-container">
+            <div>
+                <label for="Day">Day</label>
+                <input class="day-input" type="text" id="day-input" placeholder="DD">
+                <span id="day-error">day error</span>
+            </div>
+        
+            <div>
+                <label for="Day">Month</label>
+                <input class="month-input" id="month-input" type="text" placeholder="MM">
+                <span id="month-error">Month error</span>
+            </div>
+        
+            <div>
+                <label for="Day">Year</label>
+                <input class="year-input" id="year-input" type="text" placeholder="YYYY">
+                <span id="year-error">Year error</span>
+            </div>
+        </div>
     
-    <div>
-        <label for="Day">Day</label>
-        <input type="text" id="day-input" placeholder="DD">
-        <span id="day-error">day error</span>
-    </div>
+        <div class="button-outside-container">
+            <div class="grey-line"></div>
+            <div class="button-container"> 
+                <div class="line"></div>
+            <button class="submit-button" id="submit-button"><img src="icon-arrow.svg" alt=""></button>
+            </div>
+            
+        </div>
+    
+        <div class="button-outside-container">
+            <h2><span id="year-display">-- </span> years</h2>
+            <h2><span id="month-display">-- </span> months</h2>
+            <h2><span id="day-display">-- </span> days</h2>
+        </div>
 
-    <div>
-        <label for="Day">Month</label>
-        <input id="month-input" type="text" placeholder="MM">
-        <span id="month-error">Month error</span>
     </div>
-
-    <div>
-        <label for="Day">Year</label>
-        <input id="year-input" type="text" placeholder="YYYY">
-        <span id="year-error">Year error</span>
-    </div>
-
-    <div>
-        <div></div>
-        <button id="submit-button"><img src="icon-arrow.svg" alt=""></button>
-    </div>
-
-    <div>
-        <h1><span id="year-display">--</span>years</h1>
-        <h1><span id="month-display">--</span>months</h1>
-        <h1><span id="day-display">--</span>days</h1>
-    </div>
+    
+   
 
     <script src="index.js"></script>
 </body>

@@ -8,6 +8,7 @@ const submitBtn = document.getElementById('submit-button');
 
 function checkDayAndMonth() {
 
+    
     const MonthInputEl = document.getElementById('month-input');
 
     const dayInputEl = document.getElementById('day-input');
@@ -21,20 +22,21 @@ function checkDayAndMonth() {
     const usermonth = Number(MonthInputEl.value);
     
     if (userday > 30 && usermonth === 4) {
-        dayErrorMesssage.innerHTML =  'Must be a valid Day--4';
-        console.log('Must be a valid Day--4');
+        dayErrorMesssage.style.visibility = 'visible';
+        
+        dayErrorMesssage.innerHTML =  'Must be a valid Day';
     } else if (userday > 30 && usermonth === 6) {
-        dayErrorMesssage.innerHTML =  'Must be a valid Day--6';
-        console.log('Must be a valid Day--6');
+        dayErrorMesssage.innerHTML =  'Must be a valid Day';
+        dayErrorMesssage.style.visibility = 'visible';
     } else if (userday > 30 && usermonth === 9) {
-        dayErrorMesssage.innerHTML =  'Must be a valid Day--9';
-        console.log('Must be a valid Day--9');
+        dayErrorMesssage.innerHTML =  'Must be a valid Day';
+        dayErrorMesssage.style.visibility = 'visible';
     } else if (userday > 30 && usermonth === 11) {
-        dayErrorMesssage.innerHTML =  'Must be a valid Day--11';
-        console.log('Must be a valid Day--11');
-       
-    }
-
+        dayErrorMesssage.innerHTML =  'Must be a valid Day';
+        dayErrorMesssage.style.visibility = 'visible';
+    }  else {
+        dayErrorMesssage.style.visibility = 'hidden';        
+    } 
 }
 
 
@@ -53,9 +55,13 @@ function validateDay() {
     
     if (userDay === '') {
         dayErrorMesssage.innerHTML = 'Field is required';
+        dayErrorMesssage.style.visibility = 'visible';
     } else if (userDay > 31) {
+        dayErrorMesssage.style.visibility = 'visible';
         dayErrorMesssage.innerHTML = 'Must be a valid day';
-    }
+    } 
+
+    
 }
 
 submitBtn.addEventListener('click', ()=>{
@@ -91,11 +97,18 @@ function validateMonth() {
     userMonth = MonthInputEl.value;
     
     if (userMonth === '') {
+        monthErrorMesssage.style.visibility = 'visible';
         monthErrorMesssage.innerHTML = 'Field is required';
     } else if (userMonth > 12) {
+        monthErrorMesssage.style.visibility = 'visible';
         monthErrorMesssage.innerHTML = 'Must be a valid Month';
-    } 
+    } else if (userMonth !== '') {
+        monthErrorMesssage.style.visibility = 'hidden';
+    } else if (userMonth < 12) {
+        monthErrorMesssage.style.visibility = 'hidden';
+    }
 
+    
 }
 
 submitBtn.addEventListener('click', ()=>{
@@ -107,18 +120,33 @@ submitBtn.addEventListener('click', ()=>{
 function validateYear() {
     const yearInputEl = document.getElementById('year-input');
 
+    const MonthInputEl = document.getElementById('month-input');
+    
+    userMonth = Number(MonthInputEl.value);
     userYear = yearInputEl.value;
 
     const currentYear = new Date().getFullYear();
 
 
     if (userYear === '') {
+        yearErrorMesssage.style.visibility = 'visible';
         yearErrorMesssage.innerHTML = 'Field is required';
     } else if (userYear > currentYear) {
+        yearErrorMesssage.style.visibility = 'visible';
         yearErrorMesssage.innerHTML = 'Must be in the past';
     } else {
-        console.log(userYear)
-    }
+        yearErrorMesssage.style.visibility = 'hidden';
+    } 
+
+    if (userMonth === 4) {
+        yearErrorMesssage.style.visibility = 'hidden';
+    } else if (userMonth === 6) {
+        yearErrorMesssage.style.visibility = 'hidden';
+    } else if (userMonth === 9) {
+        yearErrorMesssage.style.visibility = 'hidden';
+    } else if (userMonth === 11) {
+        yearErrorMesssage.style.visibility = 'hidden';
+    } 
 }
 
 submitBtn.addEventListener('click', ()=>{
@@ -145,7 +173,6 @@ function calculateAge() {
     const thisYear = new Date().getFullYear();
 
     if (userYear === '') {
-        console.log('year must be available')
         return
     } else if (userYear > thisYear) {
         return
@@ -172,47 +199,3 @@ submitBtn.addEventListener('click', ()=>{
     calculateAge();
 })
 
-/*
-function DisplayStaticText1() {
-    const MonthInputEl = document.getElementById('month-input');
-
-    const dayInputEl = document.getElementById('day-input');
-
-    const yearInputEl = document.getElementById('year-input');
-
-    userYear = yearInputEl.value;
-
-    const userday = dayInputEl.value;
-    
-    const usermonth = MonthInputEl.value;
-
-    const yearDisplayEl = document.getElementById('year-display');
-
-    const monthDisplayEl = document.getElementById('month-display');
-
-    const dayDisplayEl = document.getElementById('day-display');
-    
-    if (userday > 30 && usermonth === 4) {
-        yearDisplayEl.innerHTML = '--';
-        monthDisplayEl.innerHTML = '--';
-        dayDisplayEl.innerHTML = '---';
-    } else if (userday > 30 && usermonth === 6) {
-        yearDisplayEl.innerHTML = '--';
-        monthDisplayEl.innerHTML = '--';
-        dayDisplayEl.innerHTML = '---';
-    } else if (userday > 30 && usermonth === 9) {
-        yearDisplayEl.innerHTML = '--';
-        monthDisplayEl.innerHTML = '--';
-        dayDisplayEl.innerHTML = '---';
-    } else if (userday > 30 && usermonth === 11) {
-        yearDisplayEl.innerHTML = '--';
-        monthDisplayEl.innerHTML = '--';
-        dayDisplayEl.innerHTML = '---';
-    }
-
-}
-
-submitBtn.addEventListener('click', ()=>{
-    DisplayStaticText1();
-})
-*/
